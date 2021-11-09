@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useCart } from '../../providers/cart';
 
 import { getProducts, IProduct } from '../../services/api';
 
+import { Header } from '../../components/header';
 import { Product } from '../../components/product';
 
-import {
-  Container,
-  ContentList,
-  ContainerIcon,
-  AlertItem,
-  Text,
-} from './styles';
+import { Container, ContentList } from './styles';
 
 type RootStackParamList = {
   Home: undefined;
@@ -36,26 +30,16 @@ function HomeScreen({ navigation }: Props) {
     navigation.navigate('Cart');
   };
 
-  const renderBadge = () => {
-    if (cartProducts?.length) {
-      return (
-        <AlertItem>
-          <Text>{cartProducts?.length}</Text>
-        </AlertItem>
-      );
-    }
-  };
-
   useEffect(() => {
     getResponse();
   }, []);
 
   return (
     <Container>
-      <ContainerIcon>
-        <Icon name="shopping-cart" size={30} onPress={handleClick} />
-        {renderBadge()}
-      </ContainerIcon>
+      <Header
+        actionClickCart={handleClick}
+        countItems={cartProducts?.length || 0}
+      />
       <ContentList
         data={products}
         renderItem={({ item }) => <Product product={item} />}

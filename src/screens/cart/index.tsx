@@ -1,31 +1,31 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { StackScreenProps } from '@react-navigation/stack';
 
 import { useCart } from '../../providers/cart';
 import { IProduct } from '../../services/api';
 import { convertToMoney } from '../../services/convert-money';
 
-import { COLORS } from '../../constants/colors';
+import { Header } from '../../components/header';
+import { RowItem } from '../../components/row-item';
 
-import {
-  Container,
-  ContentScroll,
-  Title,
-  Row,
-  Text,
-  TextPrice,
-  Image,
-  Button,
-  Section,
-  Footer,
-  Content,
-} from './styles';
+import { Container, ContentScroll, Title, Footer } from './styles';
 
-function CartScreen() {
+type RootStackParamList = {
+  Home: undefined;
+  Cart: undefined;
+};
+
+type Props = StackScreenProps<RootStackParamList, 'Cart'>;
+
+function CartScreen({ navigation }: Props) {
   const { products: cartProducts, price, removeItem } = useCart();
 
   const handleRemove = (product: IProduct) => {
     removeItem?.(product);
+  };
+
+  const handleClick = () => {
+    navigation.goBack();
   };
 
   const getLabel = () => {
@@ -37,21 +37,15 @@ function CartScreen() {
 
   return (
     <Container>
+      <Header actionBack={handleClick} />
       <ContentScroll>
         <Title>{getLabel()}</Title>
         {cartProducts?.map(product => (
-          <Row key={product.id}>
-            <Section>
-              <Image source={{ uri: product.image }} />
-              <Content>
-                <Text>{product.name}</Text>
-                <TextPrice>{`R$: ${product.price}`}</TextPrice>
-              </Content>
-            </Section>
-            <Button onPress={() => handleRemove(product)}>
-              <Icon name="close" size={18} color={COLORS.DANGER} />
-            </Button>
-          </Row>
+          <RowItem
+            key={product.id}
+            product={product}
+            actionRemove={handleRemove}
+          />
         ))}
         <Footer>
           <Title>{`Total R$ ${convertToMoney(price || 0)}`}</Title>

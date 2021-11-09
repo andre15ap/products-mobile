@@ -26,12 +26,12 @@ function Routes() {
           />
           <Stack.Navigator>
             <Stack.Screen
-              // options={{ headerShown: false }}
+              options={{ headerShown: false }}
               name="Home"
               component={HomeScreen}
             />
             <Stack.Screen
-              // options={{ headerShown: false }}
+              options={{ headerShown: false }}
               name="Cart"
               component={CartScreen}
             />

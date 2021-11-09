@@ -17,17 +17,41 @@ export const Container = styled.View`
   padding: 5px 10px;
 `;
 
+export const Content = styled.View`
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  elevation: 2;
+  border-radius: 5px;
+  background-color: ${COLORS.SECONDARY};
+  justify-content: space-around;
+  padding-bottom: 10px;
+`;
+
 export const Image = styled.Image.attrs({
   resizeMode: 'contain',
 })`
+  flex: 1;
   width: ${width * 0.4}px;
   height: ${width * 0.45}px;
+`;
+
+export const Section = styled.View`
+  flex: 1;
+  align-items: flex-start;
+  width: ${width * 0.4}px;
+  margin: 10px 0;
 `;
 
 export const Title = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  color: ${COLORS.GRAY_DARK};
+  color: ${COLORS.GRAY_LIGHT};
+`;
+
+export const TextPrice = styled.Text`
+  font-size: 12px;
+  color: ${COLORS.GRAY_LIGHT};
 `;
 
 export const Text = styled.Text`
@@ -36,13 +60,10 @@ export const Text = styled.Text`
 `;
 
 export const Button = styled.TouchableOpacity`
-  flex: 1;
   padding: 5px 15px;
-  width: 100%;
+  width: ${width * 0.4}px;
   border-radius: 5px;
-  border-width: 1px;
   background-color: ${COLORS.WHITE};
-  border-color: ${COLORS.GRAY_LIGHT};
   elevation: 2;
   align-items: center;
 `;

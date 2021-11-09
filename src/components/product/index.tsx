@@ -2,7 +2,16 @@ import React from 'react';
 import { IProduct } from '../../services/api';
 import { useCart } from '../../providers/cart';
 
-import { Container, Image, Button, Text, Title } from './styles';
+import {
+  Container,
+  Image,
+  Button,
+  Text,
+  Title,
+  Content,
+  Section,
+  TextPrice,
+} from './styles';
 
 interface IPropsProduct {
   product: IProduct;
@@ -23,14 +32,19 @@ function Product({ product }: IPropsProduct) {
 
   return (
     <Container>
-      <Image source={{ uri: image }} />
-      <Title>{name}</Title>
-      <Title>{`R$: ${price}`}</Title>
-      <Button onPress={handlePress}>
-        <Text inCart={!!itemInCart}>
-          {itemInCart ? 'Remover' : 'Adicionar'}
-        </Text>
-      </Button>
+      <Content>
+        <Image source={{ uri: image }} />
+        <Section>
+          <Title>{name}</Title>
+          <TextPrice>{`R$: ${price}`}</TextPrice>
+        </Section>
+
+        <Button onPress={handlePress}>
+          <Text inCart={!!itemInCart}>
+            {itemInCart ? 'Remover' : 'Adicionar'}
+          </Text>
+        </Button>
+      </Content>
     </Container>
   );
 }

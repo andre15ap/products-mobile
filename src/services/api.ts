@@ -10,7 +10,7 @@ const MOCK_PRODUCTS = [
   {
     id: 'e0ed9856-1218-40ef-9322-6e220fbbb858',
     description: 'de laranja',
-    name: 'bolo 1',
+    name: 'bolo 1 com um nome grande',
     price: 25.1,
     image:
       'https://bucket-image-products.s3.sa-east-1.amazonaws.com/7de084277be2d000c851-pokeball.png',
