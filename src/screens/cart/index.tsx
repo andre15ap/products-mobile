@@ -8,7 +8,14 @@ import { convertToMoney } from '../../services/convert-money';
 import { Header } from '../../components/header';
 import { RowItem } from '../../components/row-item';
 
-import { Container, ContentScroll, Title, Footer } from './styles';
+import {
+  Container,
+  ContentScroll,
+  Title,
+  Button,
+  Text,
+  Footer,
+} from './styles';
 
 type RootStackParamList = {
   Home: undefined;
@@ -18,10 +25,17 @@ type RootStackParamList = {
 type Props = StackScreenProps<RootStackParamList, 'Cart'>;
 
 function CartScreen({ navigation }: Props) {
-  const { products: cartProducts, price, removeItem } = useCart();
+  const { products: cartProducts, price, removeItem, cleanCart } = useCart();
+
+  const hasItems = cartProducts && cartProducts.length > 1;
 
   const handleRemove = (product: IProduct) => {
     removeItem?.(product);
+  };
+
+  const handleFinish = () => {
+    cleanCart?.();
+    navigation.goBack();
   };
 
   const handleClick = () => {
@@ -29,10 +43,10 @@ function CartScreen({ navigation }: Props) {
   };
 
   const getLabel = () => {
-    if (cartProducts && cartProducts.length > 1) {
-      return `${cartProducts?.length} produtos encontrados`;
+    if (hasItems) {
+      return `${cartProducts?.length} produtos adicionados:`;
     }
-    return `${cartProducts?.length} produto encontrado`;
+    return `${cartProducts?.length} produto adicionado:`;
   };
 
   return (
@@ -50,6 +64,9 @@ function CartScreen({ navigation }: Props) {
         <Footer>
           <Title>{`Total R$ ${convertToMoney(price || 0)}`}</Title>
         </Footer>
+        <Button disabled={!hasItems} onPress={handleFinish}>
+          <Text>Finalizar Compra</Text>
+        </Button>
       </ContentScroll>
     </Container>
   );

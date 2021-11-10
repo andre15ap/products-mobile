@@ -12,9 +12,9 @@ export const Container = styled.View`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  elevation: 2;
   background-color: ${COLORS.WHITE};
-  /* background-color: ${COLORS.SECONDARY}; */
+  border-width: 1px;
+  border-color: ${COLORS.PRIMARY};
 `;
 
 export const Content = styled.View``;

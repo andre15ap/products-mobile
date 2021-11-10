@@ -40,7 +40,7 @@ export const Section = styled.View`
   flex: 1;
   align-items: flex-start;
   width: ${width * 0.4}px;
-  margin: 10px 0;
+  margin: 5px 0;
 `;
 
 export const Title = styled.Text`
@@ -60,7 +60,7 @@ export const Text = styled.Text`
 `;
 
 export const Button = styled.TouchableOpacity`
-  padding: 5px 15px;
+  padding: 5px;
   width: ${width * 0.4}px;
   border-radius: 5px;
   background-color: ${COLORS.WHITE};

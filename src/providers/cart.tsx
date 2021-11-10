@@ -11,6 +11,7 @@ interface ICart {
   price?: number;
   addItem?: (product: IProduct) => void;
   removeItem?: (product: IProduct) => void;
+  cleanCart?: () => void;
 }
 
 const CartContext = createContext<ICart>({});
@@ -34,8 +35,14 @@ export const CartProvider = (props: IProps) => {
     setPrice(price - product.price);
   };
 
+  const cleanCart = async () => {
+    setProducts([]);
+    setPrice(0);
+  };
+
   return (
-    <CartContext.Provider value={{ products, price, addItem, removeItem }}>
+    <CartContext.Provider
+      value={{ products, price, addItem, removeItem, cleanCart }}>
       {props.children}
     </CartContext.Provider>
   );
