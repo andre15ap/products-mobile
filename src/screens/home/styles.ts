@@ -1,7 +1,7 @@
 import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 import { COLORS } from '../../constants/colors';
-import { IProduct } from '../../services/api';
+import { IProduct } from '../../services/api/products';
 
 export const Container = styled.SafeAreaView`
   flex: 1;

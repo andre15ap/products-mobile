@@ -1,7 +1,8 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { IProduct } from '../../services/api';
+import { convertToMoney } from '../../common/convert-money';
+import { IProduct } from '../../services/api/products';
 
 import { COLORS } from '../../constants/colors';
 
@@ -27,7 +28,7 @@ function RowItem({ product, actionRemove }: IProps) {
         <Image source={{ uri: product.image }} />
         <Content>
           <Text>{product.name}</Text>
-          <TextPrice>{`R$: ${product.price}`}</TextPrice>
+          <TextPrice>{`R$: ${convertToMoney(product.price)}`}</TextPrice>
         </Content>
       </Section>
       <Button onPress={() => actionRemove(product)}>

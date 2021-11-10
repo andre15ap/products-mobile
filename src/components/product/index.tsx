@@ -1,6 +1,7 @@
 import React from 'react';
-import { IProduct } from '../../services/api';
+import { IProduct } from '../../services/api/products';
 import { useCart } from '../../providers/cart';
+import { convertToMoney } from '../../common/convert-money';
 
 import {
   Container,
@@ -36,7 +37,7 @@ function Product({ product }: IPropsProduct) {
         <Image source={{ uri: image }} />
         <Section>
           <Title>{name}</Title>
-          <TextPrice>{`R$: ${price}`}</TextPrice>
+          <TextPrice>{`R$: ${convertToMoney(price)}`}</TextPrice>
         </Section>
 
         <Button onPress={handlePress}>

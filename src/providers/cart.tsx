@@ -1,10 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { IProduct } from '../services/api';
-
-// interface ICartItem {
-//   product: IProduct;
-//   amount: number;
-// }
+import { IProduct } from '../services/api/products';
 
 interface ICart {
   products?: IProduct[];
@@ -24,18 +19,21 @@ export const CartProvider = (props: IProps) => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [price, setPrice] = useState<number>(0);
 
-  const addItem = async (product: IProduct) => {
+  const addItem = (product: IProduct) => {
     setProducts([...products, product]);
     setPrice(price + product.price);
   };
 
-  const removeItem = async (product: IProduct) => {
+  const removeItem = (product: IProduct) => {
     const newProducts = products.filter(item => item.id !== product.id);
+    if (!newProducts.length) {
+      return cleanCart();
+    }
     setProducts([...newProducts]);
     setPrice(price - product.price);
   };
 
-  const cleanCart = async () => {
+  const cleanCart = () => {
     setProducts([]);
     setPrice(0);
   };

@@ -2,8 +2,8 @@ import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 
 import { useCart } from '../../providers/cart';
-import { IProduct } from '../../services/api';
-import { convertToMoney } from '../../services/convert-money';
+import { IProduct } from '../../services/api/products';
+import { convertToMoney } from '../../common/convert-money';
 
 import { Header } from '../../components/header';
 import { RowItem } from '../../components/row-item';

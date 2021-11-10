@@ -20,6 +20,7 @@ export const Container = styled.View`
 export const Content = styled.View``;
 
 export const Section = styled.View`
+  flex: 1;
   flex-direction: row;
 `;
 
@@ -34,6 +35,7 @@ export const Image = styled.Image.attrs({
 export const Text = styled.Text`
   font-size: 15px;
   border-color: ${COLORS.GRAY_DARK};
+  flex-wrap: wrap;
 `;
 
 export const TextPrice = styled.Text`
