@@ -6,7 +6,6 @@ import { COLORS } from '../../constants/colors';
 import { Container, Content, Text, AlertItem } from './styles';
 
 interface IPros {
-  name?: string;
   actionBack?: () => void;
   actionClickCart?: () => void;
   countItems?: number;
@@ -17,7 +16,7 @@ function Header({ actionClickCart, actionBack, countItems }: IPros) {
     if (countItems) {
       return (
         <AlertItem>
-          <Text>{countItems}</Text>
+          <Text testID="count-text">{countItems}</Text>
         </AlertItem>
       );
     }
@@ -25,13 +24,13 @@ function Header({ actionClickCart, actionBack, countItems }: IPros) {
 
   return (
     <Container>
-      <Content onPress={actionBack}>
+      <Content onPress={actionBack} testID="button-back">
         {actionBack && (
           <Icon name="arrow-back" size={30} color={COLORS.GRAY_LIGHT} />
         )}
       </Content>
       {actionClickCart && (
-        <Content onPress={actionClickCart}>
+        <Content onPress={actionClickCart} testID="button-cart">
           <Icon name="shopping-cart" size={30} color={COLORS.WHITE} />
           {renderBadge()}
         </Content>

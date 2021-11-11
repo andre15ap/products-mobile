@@ -53,7 +53,7 @@ function CartScreen({ navigation }: Props) {
     <Container>
       <Header actionBack={handleClick} />
       <ContentScroll>
-        <Title>{getLabel()}</Title>
+        <Title testID="cart-label">{getLabel()}</Title>
         {cartProducts?.map(product => (
           <RowItem
             key={product.id}
@@ -62,9 +62,14 @@ function CartScreen({ navigation }: Props) {
           />
         ))}
         <Footer>
-          <Title>{`Total R$ ${convertToMoney(price || 0)}`}</Title>
+          <Title testID="cart-price-total">
+            {`Total R$: ${convertToMoney(price || 0)}`}
+          </Title>
         </Footer>
-        <Button disabled={!hasItems} onPress={handleFinish}>
+        <Button
+          testID="cart-button"
+          disabled={!hasItems}
+          onPress={handleFinish}>
           <Text>Finalizar Compra</Text>
         </Button>
       </ContentScroll>

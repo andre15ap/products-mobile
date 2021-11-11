@@ -32,16 +32,18 @@ function Product({ product }: IPropsProduct) {
   };
 
   return (
-    <Container>
+    <Container testID="product-item-container">
       <Content>
-        <Image source={{ uri: image }} />
+        <Image testID="product-image" source={{ uri: image }} />
         <Section>
-          <Title>{name}</Title>
-          <TextPrice>{`R$: ${convertToMoney(price)}`}</TextPrice>
+          <Title testID="product-name">{name}</Title>
+          <TextPrice testID="product-price">
+            {`R$: ${convertToMoney(price)}`}
+          </TextPrice>
         </Section>
 
-        <Button onPress={handlePress}>
-          <Text inCart={!!itemInCart}>
+        <Button testID="product-button" onPress={handlePress}>
+          <Text testID="product-button-text" inCart={!!itemInCart}>
             {itemInCart ? 'Remover' : 'Adicionar'}
           </Text>
         </Button>

@@ -9,7 +9,7 @@ interface ICart {
   cleanCart?: () => void;
 }
 
-const CartContext = createContext<ICart>({});
+export const CartContext = createContext<ICart>({});
 
 interface IProps {
   children: React.ReactNode;

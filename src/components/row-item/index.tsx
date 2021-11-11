@@ -23,15 +23,17 @@ interface IProps {
 
 function RowItem({ product, actionRemove }: IProps) {
   return (
-    <Container>
+    <Container testID="row-item-container">
       <Section>
-        <Image source={{ uri: product.image }} />
+        <Image testID="row-item-image" source={{ uri: product.image }} />
         <Content>
-          <Text>{product.name}</Text>
-          <TextPrice>{`R$: ${convertToMoney(product.price)}`}</TextPrice>
+          <Text testID="row-item-name">{product.name}</Text>
+          <TextPrice testID="row-item-price">
+            {`R$: ${convertToMoney(product.price)}`}
+          </TextPrice>
         </Content>
       </Section>
-      <Button onPress={() => actionRemove(product)}>
+      <Button testID="row-item-button" onPress={() => actionRemove(product)}>
         <Icon name="close" size={18} color={COLORS.DANGER} />
       </Button>
     </Container>
