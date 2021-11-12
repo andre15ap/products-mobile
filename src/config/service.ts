@@ -1,5 +1,5 @@
 const DEVELOPMENT_URL = 'http://192.168.0.41:3000';
-const PRODUCTION_URL = '';
+const PRODUCTION_URL = 'https://products-back15.herokuapp.com';
 
 const BASE_URL = __DEV__ ? DEVELOPMENT_URL : PRODUCTION_URL;
 

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { useCart } from '../../providers/cart';
 
 import { getProducts, IProduct } from '../../services/api/products';
 import { appHit } from '../../services/api/app-hit';
+
+import { compare } from '../../common/compare-product';
 
 import { Header } from '../../components/header';
 import { Product } from '../../components/product';
@@ -25,12 +27,13 @@ function HomeScreen({ navigation }: Props) {
   const [loading, setLoading] = useState(false);
   const [isFetching] = useState(false);
 
-  const getResponse = async () => {
+  const getResponse = useCallback(async () => {
     setLoading(true);
     const result = await getProducts();
+    const sorted = result.sort(compare);
     setLoading(false);
-    setProducts(result);
-  };
+    setProducts(sorted);
+  }, []);
 
   const handleClick = () => {
     navigation.navigate('Cart');
@@ -38,7 +41,7 @@ function HomeScreen({ navigation }: Props) {
 
   useEffect(() => {
     getResponse();
-  }, []);
+  }, [getResponse]);
 
   useEffect(() => {
     appHit();
@@ -56,7 +59,7 @@ function HomeScreen({ navigation }: Props) {
         renderItem={({ item }) => <Product product={item} />}
         keyExtractor={item => item.id}
         numColumns={2}
-        onRefresh={() => getResponse()}
+        onRefresh={getResponse}
         refreshing={isFetching}
       />
     </Container>

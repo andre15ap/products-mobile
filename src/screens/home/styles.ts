@@ -12,8 +12,3 @@ export const ContentList = styled(FlatList as new () => FlatList<IProduct>)`
   width: 100%;
   flex: 1;
 `;
-
-export const Text = styled.Text`
-  font-size: 10px;
-  color: ${COLORS.WHITE};
-`;

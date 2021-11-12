@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const Container = styled.View`
-  flex: 1;
   width: ${width * 0.5}px;
   max-width: ${width * 0.5}px;
   align-items: center;
