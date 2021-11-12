@@ -10,6 +10,7 @@ export const Container = styled.SafeAreaView`
 
 export const ContentList = styled(FlatList as new () => FlatList<IProduct>)`
   width: 100%;
+  flex: 1;
 `;
 
 export const Text = styled.Text`

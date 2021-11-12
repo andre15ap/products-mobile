@@ -3,4 +3,10 @@ const PRODUCTION_URL = '';
 
 const BASE_URL = __DEV__ ? DEVELOPMENT_URL : PRODUCTION_URL;
 
-export { BASE_URL };
+const API_COUNT = {
+  URL: 'https://api.countapi.xyz/hit',
+  NAMESPACE: 'product-app',
+  KEY: 'app-key',
+};
+
+export { BASE_URL, API_COUNT };

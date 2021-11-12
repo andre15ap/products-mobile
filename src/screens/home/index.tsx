@@ -3,6 +3,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { useCart } from '../../providers/cart';
 
 import { getProducts, IProduct } from '../../services/api/products';
+import { appHit } from '../../services/api/app-hit';
 
 import { Header } from '../../components/header';
 import { Product } from '../../components/product';
@@ -37,6 +38,10 @@ function HomeScreen({ navigation }: Props) {
 
   useEffect(() => {
     getResponse();
+  }, []);
+
+  useEffect(() => {
+    appHit();
   }, []);
 
   return (

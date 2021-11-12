@@ -23,6 +23,10 @@ jest.mock('../../../services/api/products', () => ({
   getProducts: () => mockProducts,
 }));
 
+jest.mock('../../../services/api/app-hit', () => ({
+  appHit: jest.fn(),
+}));
+
 describe('HomeScreen', () => {
   it('renders correctly', async () => {
     const navigation = jest.fn();
